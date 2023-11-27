@@ -53,12 +53,12 @@ router.put('/:id', async (req, res) => {
     const categoryId = req.params.id;
     const updatedData = req.body;
 
-    const [rowsUpdated, [updatedCategory]] = await Category.update(updatedData, {
-      where: { id: categoryId },
-      returning: true, // Return the updated category
+    const updatedCategory = await Category.update(updatedData, {
+      where: { 
+        id: categoryId },
     });
 
-    if (rowsUpdated > 0) {
+    if (updatedCategory) {
       console.log('Category updated successfully:', updatedCategory);
       res.status(200).json({ message: 'Category updated successfully', category: updatedCategory });
     } else {
