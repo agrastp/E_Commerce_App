@@ -1,3 +1,5 @@
+//Routes to either categories, products, or tags
+
 const router = require('express').Router();
 const categoryRoutes = require('./category-routes');
 const productRoutes = require('./product-routes');

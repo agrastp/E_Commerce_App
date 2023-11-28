@@ -1,3 +1,5 @@
+//Boilerplate code to connect to the database and create a connection
+
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
