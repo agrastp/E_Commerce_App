@@ -36,20 +36,7 @@ router.get('/:id', async (req, res) => {
 // creates a new product
 
 router.post('/', async (req, res) => {
-  try {
-    const newProduct = await Product.create({
-      product_name: req.body.product_name,
-      price: req.body.price,
-      stock: req.body.stock,
-      include: [{ model: ProductTag, as: "tagID" }],
-    });
-    res.status(200).json(newProduct);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-
-
-  Product.create(req.body)
+  await Product.create(req.body)
     .then((product) => {
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
